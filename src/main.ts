@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync } from 'fs';
 import { createColorIntentMap } from './createColorIntentMap';
 import { groupSimilarColors, MappedColors } from './groupSimilarColors';
 
@@ -13,14 +13,13 @@ const validateResult = (originalColors: Array<string>, mappedColors: MappedColor
     const mappedColorsAsString = mappedColorsFlat.sort().join('|');
 
     if (originalColorsAsString !== mappedColorsAsString) {
-        console.log(mappedColors)
+        console.log(mappedColors);
         console.error(`Expected:\n\t${originalColorsAsString} \nbut got:\n\t${mappedColorsAsString}`);
         return false;
     }
 
-    
     return true;
-}
+};
 
 // reads from project <root>/colors.txt
 const colorIntentMap = createColorIntentMap(readFileSync('colors.txt', 'utf8'));
@@ -28,5 +27,7 @@ const mappedColors = groupSimilarColors({ colors: Array.from(colorIntentMap.keys
 
 if (validateResult(Array.from(colorIntentMap.keys()), mappedColors)) {
     console.log(mappedColors);
-    console.log(`\n\nColors size reduced by ${colorIntentMap.size - mappedColors.size}. Total size now ${mappedColors.size}`);
+    console.log(
+        `\n\nColors size reduced by ${colorIntentMap.size - mappedColors.size}. Total size now ${mappedColors.size}`,
+    );
 }

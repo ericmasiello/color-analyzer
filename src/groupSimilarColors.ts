@@ -3,7 +3,7 @@ import { deltaE } from './colorDelta';
 
 export type MappedColors = Map<string, Array<string>>;
 
-export const groupSimilarColors = (options: { colors: Array<string>, threshold?: number }): MappedColors => {
+export const groupSimilarColors = (options: { colors: Array<string>; threshold?: number }): MappedColors => {
     const { colors: unprocessedColors, threshold = 2 } = options;
     const processedColorMap: MappedColors = new Map();
 
@@ -20,14 +20,16 @@ export const groupSimilarColors = (options: { colors: Array<string>, threshold?:
         }, [] as Array<number>);
 
         // create list of similar colors
-        const similarColors = [checkColor].concat(unprocessedColors.filter((_, index) => similarColorsIndecies.includes(index))).sort();
+        const similarColors = [checkColor]
+            .concat(unprocessedColors.filter((_, index) => similarColorsIndecies.includes(index)))
+            .sort();
 
         // reverse the indecies list
         // this is necessary so that you don't change the size of the list while iterating over it
         similarColorsIndecies.sort((a, b) => b - a);
 
         // remove the similar colors from the unprocessedColors list
-        similarColorsIndecies.forEach(index => {
+        similarColorsIndecies.forEach((index) => {
             unprocessedColors.splice(index, 1);
         });
 
@@ -38,7 +40,6 @@ export const groupSimilarColors = (options: { colors: Array<string>, threshold?:
 
         processedColorMap.set(sharedColor, similarColors);
     } while (unprocessedColors.length > 0);
-
 
     return processedColorMap;
 };
