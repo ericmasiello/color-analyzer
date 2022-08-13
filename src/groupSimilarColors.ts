@@ -19,17 +19,8 @@ export const groupSimilarColors = (options: { colors: Array<string>, threshold?:
             return indexSet;
         }, [] as Array<number>);
 
-        // sort the similar colors and use the middle value as the shared value
+        // create list of similar colors
         const similarColors = [checkColor].concat(unprocessedColors.filter((_, index) => similarColorsIndecies.includes(index))).sort();
-
-        if (checkColor === '#FDFDFD' || checkColor === '#FCFCFC') {
-            console.log({
-                checkColor,
-                similarColorsIndecies,
-                unprocessedColors,
-                similarColors,
-            });
-        }
 
         // reverse the indecies list
         // this is necessary so that you don't change the size of the list while iterating over it
