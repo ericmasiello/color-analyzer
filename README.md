@@ -4,7 +4,13 @@ A script that analyzes a list of colors, attempting to reduce the color set when
 
 Note, this project uses Bun as its run time. https://github.com/oven-sh/bun
 
-To run the code, run:
+## Install Dependencies
+
+```bash
+bun install
+```
+
+## Run the app
 
 ```bash
 bun run src/main.ts
