@@ -1,5 +1,7 @@
 import { RGB } from "color-convert/conversions";
 
+// logic based on http://zschuessler.github.io/DeltaE/learn/
+
 function rgb2lab(rgb: RGB){
     let r = rgb[0] / 255, g = rgb[1] / 255, b = rgb[2] / 255, x, y, z;
     r = (r > 0.04045) ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
