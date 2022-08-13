@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "color-convert": "^2.0.1",
+    "prettier": "^2.7.1"
+  },
+  "devDependencies": {
+    "@types/color-convert": "^2.0.0",
+    "@types/node": "^18.7.2"
+  }
+}
